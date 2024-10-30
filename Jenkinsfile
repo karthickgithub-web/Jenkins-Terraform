@@ -5,7 +5,6 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-        AWS_DEFAULT_REGION    = 'us-east-1'  // Set your AWS region here
     }
 
     agent any
@@ -46,18 +45,6 @@ pipeline {
         stage('Apply') {
             steps {
                 powershell 'cd terraform; terraform apply -input=false tfplan'
-                script {
-                    // Capture the instance ID after launch
-                    def instanceId = powershell(script: 'cd terraform; terraform output -raw instance_id', returnStdout: true).trim()
-                    writeFile file: 'terraform\\instance_id.txt', text: instanceId
-                    env.INSTANCE_ID = instanceId
-                }
-            }
-        }
-
-        stage('Terminate') {
-            steps {
-                powershell "aws ec2 terminate-instances --instance-ids ${env.INSTANCE_ID}"
             }
         }
     }
