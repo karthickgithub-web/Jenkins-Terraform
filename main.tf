@@ -10,3 +10,7 @@ resource "aws_instance" "demo2" {
       
   }
 }
+
+resource "aws_iam_user" "anil" {
+  name = anil-demo
+}
