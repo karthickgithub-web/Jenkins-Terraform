@@ -58,5 +58,5 @@ resource "aws_instance" "terraflow-instance" {
 
 # Output the public IP of the instance
 output "public_ip" {
-  value = aws_instance.example.public_ip
+  value = aws_instance.terraflow-instance.public_ip
 }
