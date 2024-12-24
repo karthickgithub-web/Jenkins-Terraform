@@ -47,7 +47,7 @@ resource "aws_instance" "terraflow-instance" {
 
   vpc_security_group_ids = [aws_security_group.allow_traffic.id] # Attach the security group
 
-  key_name = "Terraform-key" # Replace with your key pair name if you need to SSH
+  key_name = "jenkinserver" # Replace with your key pair name if you need to SSH
 
   tags = {
     Name = "Terraform-Instance"
