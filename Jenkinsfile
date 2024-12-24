@@ -13,7 +13,7 @@ pipeline {
         stage('checkout') {
             steps {
                  script{
-                        dir("terraform-new")
+                        dir("terraform")
                         {
                             git "https://github.com/karthickgithub-web/Jenkins-Terraform.git"
                         }
