@@ -41,7 +41,7 @@ resource "aws_security_group" "allow_traffic" {
 }
 
 # Create an EC2 instance
-resource "aws_instance" "example" {
+resource "aws_instance" "terraflow-instance" {
   ami           = "ami-05fa00d4c63e32376" # Replace with a valid AMI ID for your region. Amazon Linux 2 AMI is used here.
   instance_type = "t2.micro"
 
